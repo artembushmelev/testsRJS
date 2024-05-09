@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 type AddItemFormPropsType = {
-  addTask: (title: string, todolistId: string) => void;
-  id: string;
+  addItem: (title: string) => void;
 };
 
 export const AddItemForm = (props: AddItemFormPropsType) => {
@@ -11,14 +10,14 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
 
   const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !(taskTitle.trim() === "")) {
-      props.addTask(taskTitle, props.id);
+      props.addItem(taskTitle);
       setTaskTitle("");
     }
   };
 
   const addTask = () => {
-    if (taskTitle.trim() === "") {
-      props.addTask(taskTitle, props.id);
+    if (taskTitle.trim() !== "") {
+      props.addItem(taskTitle);
       setTaskTitle("");
     } else {
       setError("Title is required");
