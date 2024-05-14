@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { Button, IconButton, TextField } from "@mui/material";
+import { ChangeEvent, useState } from "react";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import AddIcon from "@mui/icons-material/Add";
 
 type AddItemFormPropsType = {
   addItem: (title: string) => void;
@@ -15,10 +18,15 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
     }
   };
 
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setTaskTitle(e.currentTarget.value);
+  };
+
   const addTask = () => {
     if (taskTitle.trim() !== "") {
       props.addItem(taskTitle);
       setTaskTitle("");
+      setError(null);
     } else {
       setError("Title is required");
     }
@@ -26,21 +34,19 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
 
   return (
     <div>
-      <input
+      <TextField
+        label="Введите задачу"
+        variant="standard"
+        error={!!error}
+        helperText={error}
         className={error ? "error" : ""}
         value={taskTitle}
-        onChange={(e) => {
-          setTaskTitle(e.currentTarget.value);
-        }}
+        onChange={onChangeHandler}
         onKeyUp={onKeyPressHandler}
       />
-      <button
-        onClick={addTask}
-        disabled={!taskTitle || !(taskTitle.length <= 15)} // disbled = false
-      >
-        +
-      </button>
-      {taskTitle.length > 5 && <div>stop</div>}
+      <IconButton onClick={addTask} color={"primary"}>
+        <AddIcon />
+      </IconButton>
     </div>
   );
 };
