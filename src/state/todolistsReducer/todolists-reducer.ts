@@ -68,7 +68,7 @@ export const AddTodolistAC = (
   return { type: "ADD-TODOLIST", title: newTodolistTitle, todolistId: v1() };
 };
 
-export const ChangeTotodlistTitleAC = (
+export const ChangeTodolistTitleAC = (
   newTodolistTitle: string,
   todolistId: string
 ): ChangeTodolistTitleActionType => {

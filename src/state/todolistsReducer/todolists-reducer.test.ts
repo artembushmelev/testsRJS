@@ -4,7 +4,7 @@ import {
   ActionTypes,
   AddTodolistAC,
   ChangeTotodlistFilterAC,
-  ChangeTotodlistTitleAC,
+  ChangeTodolistTitleAC,
   RemoveTodolistAC,
   todolistsReducer,
 } from "./todolists-reducer";
@@ -56,7 +56,7 @@ test("correct todolist should change its name", () => {
 
   const endState = todolistsReducer(
     startState,
-    ChangeTotodlistTitleAC(newTodolistTitle, todolistId2)
+    ChangeTodolistTitleAC(newTodolistTitle, todolistId2)
   );
 
   expect(endState[0].title).toBe("What to learn");
