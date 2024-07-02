@@ -1,7 +1,6 @@
 import React, { useReducer, useRef, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { TaskType, TodoList } from "./TodoList";
+
 import { v1 } from "uuid";
 import { AddItemForm } from "./AddItemForm";
 import {
@@ -28,6 +27,7 @@ import {
   removeTaskAC,
   tasksReducer,
 } from "./state/tasksReducer/task-reducer";
+import { TaskType, Todolist } from "./Todolist";
 
 export type FilterValuesType = "all" | "completed" | "active";
 
@@ -143,7 +143,7 @@ function AppWithReducer() {
             return (
               <Grid item>
                 <Paper style={{ padding: "10px" }}>
-                  <TodoList
+                  <Todolist
                     key={tl.id}
                     id={tl.id}
                     title={tl.title}
@@ -151,9 +151,9 @@ function AppWithReducer() {
                     removeTask={removeTask}
                     changeFilter={changeFilter}
                     addTask={addTask}
-                    changeStatus={changeStatus}
+                    changeTaskStatus={changeStatus}
                     filter={tl.filter}
-                    removeTodoList={removeTodoList}
+                    removeTodolist={removeTodoList}
                     changeTaskTitle={changeTaskTitle}
                     changeTodolistTitle={changeTodolistTitle}
                   />

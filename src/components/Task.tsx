@@ -1,10 +1,10 @@
-import Checkbox from "@mui/material/Checkbox";
 import { EditableSpan } from "../EditableSpan";
 import IconButton from "@mui/material/IconButton";
 import { Delete } from "@mui/icons-material";
-import { TaskType } from "../TodoList";
+import { TaskType } from "../Todolist";
 import { ChangeEvent, useCallback } from "react";
 import React from "react";
+import Checkbox from "@mui/material/Checkbox";
 
 export type TaskPropsType = {
   changeStatus: (taskId: string, isDone: boolean, todolistId: string) => void;
@@ -40,7 +40,7 @@ export const Task = React.memo((props: TaskPropsType) => {
       className={props.task.isDone === true ? "is-done" : ""}
     >
       <Checkbox checked={props.task.isDone} onChange={onChangeStatusHandler} />
-      <EditableSpan title={props.task.title} onChange={onChangeTitleHandler} />
+      <EditableSpan value={props.task.title} onChange={onChangeTitleHandler} />
       <IconButton onClick={removeTask}>
         <Delete />
       </IconButton>

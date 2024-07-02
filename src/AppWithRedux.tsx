@@ -1,7 +1,7 @@
 import React, { useCallback, useReducer, useRef, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { TaskType, TodoList } from "./TodoList";
+import { TaskType, Todolist } from "./Todolist";
 import { v1 } from "uuid";
 import { AddItemForm } from "./AddItemForm";
 import {
@@ -137,7 +137,7 @@ function AppWithRedux() {
             return (
               <Grid key={tl.id} item>
                 <Paper style={{ padding: "10px" }}>
-                  <TodoList
+                  <Todolist
                     key={tl.id}
                     id={tl.id}
                     title={tl.title}
@@ -145,9 +145,9 @@ function AppWithRedux() {
                     removeTask={removeTask}
                     changeFilter={changeFilter}
                     addTask={addTask}
-                    changeStatus={changeStatus}
+                    changeTaskStatus={changeStatus}
                     filter={tl.filter}
-                    removeTodoList={removeTodoList}
+                    removeTodolist={removeTodoList}
                     changeTaskTitle={changeTaskTitle}
                     changeTodolistTitle={changeTodolistTitle}
                   />
